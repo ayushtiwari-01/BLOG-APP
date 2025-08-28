@@ -18,16 +18,18 @@ connectDB();
 // Create Express app
 const app = express();
 
-// CORS configuration for production - DEFINE THIS FIRST
+// CORS configuration for production
 const corsOptions = {
   origin: [
     'http://localhost:3000', // Development
     'https://ayush-blogapp.vercel.app', // Production frontend
+    'https://ayush-blogapp.vercel.app', // Alternative domain
     'https://blog-app-wwf4.onrender.com' // Backend (for testing)
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200 // Some legacy browsers choke on 204
 };
 
 // Middleware - USE corsOptions AFTER it's defined

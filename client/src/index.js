@@ -10,8 +10,14 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import axios from "axios";
 
 // Configure Axios base URL from environment for production (Vercel)
-// Prefer Vite-style var; fallback to CRA-style; default to empty for local proxy
-axios.defaults.baseURL = process.env.VITE_API_URL || process.env.REACT_APP_API_BASE_URL || "";
+// Use CRA-style env var for production, fallback to empty for local proxy
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "";
+axios.defaults.baseURL = apiBaseUrl;
+
+// Log the base URL for debugging (remove in production)
+if (process.env.NODE_ENV === 'development') {
+  console.log('🔗 API Base URL:', apiBaseUrl || 'Using CRA proxy (localhost:8080)');
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
