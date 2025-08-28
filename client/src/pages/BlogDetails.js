@@ -25,6 +25,10 @@ import {
   Image as ImageIcon,
   Preview as PreviewIcon,
 } from "@mui/icons-material";
+import API_BASE_URL from "../config/api";
+
+// Configure axios defaults
+axios.defaults.baseURL = API_BASE_URL;
 
 const BlogDetails = () => {
   const [blog, setBlog] = useState({});
@@ -39,7 +43,6 @@ const BlogDetails = () => {
     image: "",
   });
 
-  // ✅ FIXED: Prevent infinite loops with proper dependency array
   const getBlogDetail = async () => {
     setLoading(true);
     try {
@@ -61,12 +64,11 @@ const BlogDetails = () => {
     }
   };
 
-  // ✅ FIXED: Proper useEffect with dependency array
   useEffect(() => {
     if (id) {
       getBlogDetail();
     }
-  }, [id]); // Only re-run when id changes
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -120,7 +122,6 @@ const BlogDetails = () => {
 
     setUpdating(true);
     try {
-      // ✅ FIXED: Get actual user ID from localStorage
       const userId = localStorage.getItem("userId");
       
       if (!userId) {
@@ -143,7 +144,7 @@ const BlogDetails = () => {
         title: inputs.title.trim(),
         description: inputs.description.trim(),
         image: inputs.image.trim(),
-        user: userId, // ✅ FIXED: Use actual user ID
+        user: userId,
       });
       
       console.log("Update response:", data);

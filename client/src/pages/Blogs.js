@@ -23,6 +23,10 @@ import {
   Create as CreateIcon,
 } from "@mui/icons-material";
 import BlogCard from "../components/BlogCard";
+import API_BASE_URL from "../config/api";
+
+// Configure axios defaults
+axios.defaults.baseURL = API_BASE_URL;
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -442,7 +446,7 @@ const Blogs = () => {
               </Typography>
             </Fade>
 
-            {/* ✅ UPDATED: Equal Height Blog Cards Grid */}
+            {/* Equal Height Blog Cards Grid */}
             <Box
               sx={{
                 display: "grid",
@@ -451,8 +455,8 @@ const Blogs = () => {
                   xs: "1fr",
                   sm: "repeat(auto-fit, minmax(400px, 1fr))",
                 },
-                gridAutoRows: "1fr", // ✅ Force all grid items same height
-                alignItems: "stretch", // ✅ Stretch items to fill height
+                gridAutoRows: "1fr",
+                alignItems: "stretch",
               }}
             >
               {blogs.map((blog, index) => (
@@ -462,7 +466,7 @@ const Blogs = () => {
                   timeout={(index + 1) * 200}
                   style={{ transformOrigin: '0 0 0' }}
                 >
-                  <Box sx={{ height: "100%" }}> {/* ✅ Full height wrapper */}
+                  <Box sx={{ height: "100%" }}>
                     <BlogCard
                       id={blog._id}
                       isUser={localStorage.getItem("userId") === blog?.user?._id}

@@ -4,7 +4,7 @@ const config = {
     API_BASE_URL: 'http://localhost:8080',
   },
   production: {
-    API_BASE_URL: 'https://your-backend-app.onrender.com', // Update after Render deployment
+    API_BASE_URL: 'https://blog-app-wwf4.onrender.com',
   }
 };
 

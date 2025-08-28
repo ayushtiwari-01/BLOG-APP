@@ -23,6 +23,10 @@ import {
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
+
+// Configure axios defaults
+axios.defaults.baseURL = API_BASE_URL;
 
 export default function BlogCard({
   title,
@@ -147,11 +151,10 @@ export default function BlogCard({
           boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
           transition: "all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)",
           position: "relative",
-          // ✅ FIXED: Equal height layout
           display: "flex",
           flexDirection: "column",
-          height: expanded ? "auto" : 550, // ✅ Fixed height, auto when expanded
-          minHeight: 550, // ✅ Minimum height for consistency
+          height: expanded ? "auto" : 550,
+          minHeight: 550,
           "&:hover": {
             boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
             transform: "translateY(-8px)",
@@ -227,8 +230,8 @@ export default function BlogCard({
           <Box sx={{ 
             position: "relative", 
             overflow: "hidden",
-            height: 200, // ✅ Fixed image height
-            flexShrink: 0, // ✅ Prevent shrinking
+            height: 200,
+            flexShrink: 0,
           }}>
             <CardMedia
               className="card-image"
@@ -339,7 +342,7 @@ export default function BlogCard({
           sx={{ 
             pb: 1,
             pt: 2,
-            flexShrink: 0, // ✅ Prevent header shrinking
+            flexShrink: 0,
           }}
         />
 
@@ -349,7 +352,7 @@ export default function BlogCard({
         <CardContent sx={{ 
           px: 3, 
           py: 3,
-          flexGrow: 1, // ✅ Take up remaining space
+          flexGrow: 1,
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
@@ -368,7 +371,7 @@ export default function BlogCard({
               WebkitLineClamp: 2,
               WebkitBoxOrient: "vertical",
               overflow: "hidden",
-              flexShrink: 0, // ✅ Keep title consistent
+              flexShrink: 0,
             }}
           >
             {title}
@@ -382,13 +385,13 @@ export default function BlogCard({
               sx={{ 
                 lineHeight: 1.7,
                 fontFamily: "system-ui, -apple-system, sans-serif",
-                whiteSpace: "pre-line", // ✅ Preserve line breaks
+                whiteSpace: "pre-line",
                 wordBreak: "break-word",
                 overflowWrap: "break-word",
                 overflow: "hidden",
                 flexGrow: 1,
                 display: "-webkit-box",
-                WebkitLineClamp: expanded ? "none" : 6, // ✅ Limit lines
+                WebkitLineClamp: expanded ? "none" : 6,
                 WebkitBoxOrient: "vertical",
               }}
             >
@@ -405,7 +408,7 @@ export default function BlogCard({
                 justifyContent: 'space-between', 
                 alignItems: 'center', 
                 mt: 2,
-                flexShrink: 0, // ✅ Keep button area consistent
+                flexShrink: 0,
               }}>
                 <Button
                   size="small"

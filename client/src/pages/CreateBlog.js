@@ -16,12 +16,16 @@ import {
   Publish as PublishIcon,
 } from "@mui/icons-material";
 import toast from "react-hot-toast";
+import API_BASE_URL from "../config/api";
+
+// Configure axios defaults
+axios.defaults.baseURL = API_BASE_URL;
 
 const CreateBlog = () => {
   const id = localStorage.getItem("userId");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [showPreview, setShowPreview] = useState(false); // ✅ Added preview state
+  const [showPreview, setShowPreview] = useState(false);
   
   const [inputs, setInputs] = useState({
     title: "",
@@ -40,7 +44,6 @@ const CreateBlog = () => {
     navigate("/my-blogs");
   };
 
-  // ✅ FIXED: Working preview function
   const handlePreview = () => {
     if (!inputs.title.trim() || !inputs.description.trim()) {
       toast.error("Please fill in title and content to preview");
@@ -316,7 +319,7 @@ const CreateBlog = () => {
             </Box>
           </form>
 
-          {/* ✅ PREVIEW SECTION */}
+          {/* PREVIEW SECTION */}
           {showPreview && (
             <Box sx={{ mt: 4 }}>
               <Divider sx={{ mb: 3 }} />

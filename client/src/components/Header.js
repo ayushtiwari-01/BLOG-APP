@@ -37,6 +37,11 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
 import toast from "react-hot-toast";
+import axios from "axios";
+import API_BASE_URL from "../config/api";
+
+// Configure axios defaults
+axios.defaults.baseURL = API_BASE_URL;
 
 const Header = () => {
   // global state
@@ -429,7 +434,7 @@ const Header = () => {
               </Typography>
             </Box>
 
-            {/* ✅ CENTER NAVIGATION - NO OUTER BOX */}
+            {/* CENTER NAVIGATION */}
             {isLogin && !isMobile && (
               <Box sx={{ 
                 display: 'flex', 
@@ -678,4 +683,3 @@ const Header = () => {
 };
 
 export default Header;
-  
