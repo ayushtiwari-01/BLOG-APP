@@ -17,10 +17,8 @@ connectDB();
 
 // Create Express app
 const app = express();
-// Add this after your CORS middleware
-app.options('*', cors(corsOptions));
 
-// CORS configuration for production
+// CORS configuration for production - DEFINE THIS FIRST
 const corsOptions = {
   origin: [
     'http://localhost:3000', // Development
@@ -32,9 +30,10 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization']
 };
 
-// Middleware
+// Middleware - USE corsOptions AFTER it's defined
 app.use(cors(corsOptions));
-app.use(express.json({ limit: '10mb' })); // Increase payload limit for images
+app.options('*', cors(corsOptions)); // Now this will work
+app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
