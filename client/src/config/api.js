@@ -1,10 +1,9 @@
-// API configuration for different environments
 const config = {
   development: {
     API_BASE_URL: 'http://localhost:8080',
   },
   production: {
-    API_BASE_URL: 'https://blog-app-wwf4.onrender.com',
+    API_BASE_URL: process.env.REACT_APP_API_URL || 'https://blog-app-wwf4.onrender.com',
   }
 };
 
