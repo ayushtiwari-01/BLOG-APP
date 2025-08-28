@@ -17,6 +17,8 @@ connectDB();
 
 // Create Express app
 const app = express();
+// Add this after your CORS middleware
+app.options('*', cors(corsOptions));
 
 // CORS configuration for production
 const corsOptions = {

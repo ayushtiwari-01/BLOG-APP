@@ -24,9 +24,9 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
 import toast from "react-hot-toast";
-import API_BASE_URL from "../config/api";
+import API_BASE_URL from "../config/api.js";
 
-// Configure axios defaults
+// Configure axios defaults - THIS IS THE FIX
 axios.defaults.baseURL = API_BASE_URL;
 
 const Login = () => {
@@ -49,7 +49,6 @@ const Login = () => {
       [name]: value,
     }));
     
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -61,7 +60,6 @@ const Login = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!inputs.email.trim()) {
       newErrors.email = "Email is required";
@@ -69,7 +67,6 @@ const Login = () => {
       newErrors.email = "Please enter a valid email address";
     }
 
-    // Password validation
     if (!inputs.password) {
       newErrors.password = "Password is required";
     } else if (inputs.password.length < 6) {
@@ -89,6 +86,7 @@ const Login = () => {
 
     setLoading(true);
     try {
+      // This will now correctly go to https://blog-app-wwf4.onrender.com/api/v1/user/login
       const { data } = await axios.post("/api/v1/user/login", {
         email: inputs.email.trim(),
         password: inputs.password,
@@ -99,11 +97,15 @@ const Login = () => {
         dispatch(authActions.login());
         toast.success("Login successful! Welcome back.");
         navigate("/");
+      } else {
+        toast.error(data.message || "Login failed");
       }
     } catch (error) {
       console.error("Login error:", error);
       if (error.response?.data?.message) {
         toast.error(error.response.data.message);
+      } else if (error.response?.status === 405) {
+        toast.error("Login service unavailable. Please try again.");
       } else {
         toast.error("Login failed. Please check your credentials.");
       }
