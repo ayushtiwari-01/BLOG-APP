@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import API_BASE_URL from "../config/api.js";
+import axios from "axios";
+
+// Configure axios defaults - THIS IS CRUCIAL  
+axios.defaults.baseURL = API_BASE_URL;
+
 import { useNavigate } from "react-router-dom";
 import {
   Box,
