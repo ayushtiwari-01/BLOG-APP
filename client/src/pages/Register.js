@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import API_BASE_URL from "../config/api.js";
 import axios from "axios";
-
-// Configure axios defaults - THIS IS CRUCIAL  
-axios.defaults.baseURL = API_BASE_URL;
-
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -28,10 +23,6 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-
-
-// Configure axios defaults
-axios.defaults.baseURL = API_BASE_URL;
 
 const Register = () => {
   const navigate = useNavigate();

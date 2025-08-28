@@ -1,12 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-
-import API_BASE_URL from "../config/api.js";
 import axios from "axios";
-
-// Configure axios defaults - THIS IS CRUCIAL
-axios.defaults.baseURL = API_BASE_URL;
-
-
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
@@ -30,7 +23,6 @@ import {
   Create as CreateIcon,
 } from "@mui/icons-material";
 import BlogCard from "../components/BlogCard";
-import API_BASE_URL from "../config/api.js";
 
 
 

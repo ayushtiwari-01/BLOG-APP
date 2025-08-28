@@ -8,11 +8,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import API_BASE_URL from "../config/api.js";
+
 import axios from "axios";
 
 // Configure axios defaults - THIS IS CRUCIAL
-axios.defaults.baseURL = API_BASE_URL;
+
 
 import { 
   Box, 
@@ -29,8 +29,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-// Configure axios defaults
-axios.defaults.baseURL = API_BASE_URL;
+
 
 export default function BlogCard({
   title,

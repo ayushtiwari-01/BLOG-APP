@@ -21,10 +21,9 @@ import {
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import BlogCard from "../components/BlogCard";
-import API_BASE_URL from "../config/api";
 
-// Configure axios defaults
-axios.defaults.baseURL = API_BASE_URL;
+
+
 
 const UserBlogs = () => {
   const [blogs, setBlogs] = useState([]);

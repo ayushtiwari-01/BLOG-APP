@@ -25,10 +25,9 @@ import {
   Image as ImageIcon,
   Preview as PreviewIcon,
 } from "@mui/icons-material";
-import API_BASE_URL from "../config/api";
 
-// Configure axios defaults
-axios.defaults.baseURL = API_BASE_URL;
+
+
 
 const BlogDetails = () => {
   const [blog, setBlog] = useState({});
