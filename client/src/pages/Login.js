@@ -26,11 +26,11 @@ import {
   Login as LoginIcon,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
 import { useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
 import toast from "react-hot-toast";
-import API_BASE_URL from "../config/api.js";
+
 
 // Configure axios defaults - THIS IS THE FIX
 axios.defaults.baseURL = API_BASE_URL;
