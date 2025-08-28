@@ -1,0 +1,17 @@
+{
+  "name": "blog-app-monorepo",
+  "version": "1.0.0",
+  "description": "Blog App with React frontend and Node.js backend",
+  "private": true,
+  "workspaces": [
+    "client"
+  ],
+  "scripts": {
+    "build": "cd client && npm run build",
+    "start": "cd client && npm start",
+    "install:client": "cd client && npm install"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
